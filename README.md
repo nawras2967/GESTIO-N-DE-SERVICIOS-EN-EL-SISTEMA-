@@ -1,69 +1,100 @@
-# Gestión de servicios en el sistema informático
+# IT Systems and Services Management
 
-Prácticas de diseño y simulación de redes con **Cisco Packet Tracer**, configuración de servicios, seguridad perimetral y monitorización de servidores Linux.
+**Network Design · Service Configuration · Perimeter Security · Infrastructure Monitoring**
 
-## Sobre la asignatura
+Practical coursework combining **Cisco Packet Tracer** network simulations with virtualized **Debian** environments. The labs cover network connectivity, DNS and HTTP services, security with IPCop and a DMZ, and server monitoring with Nagios 4 and NCPA.
 
-En esta asignatura trabajé cómo se comunican los equipos de una red, cómo se configuran los servicios que utilizan y cómo se supervisa su funcionamiento. Combiné fundamentos de redes con simulaciones en Packet Tracer y prácticas sobre máquinas virtuales Debian.
+## Overview
 
-Este repositorio está dedicado al trabajo académico de la **UD01: Gestión de la seguridad y normativas**. Los contenidos resumidos aquí corresponden a las actividades de redes, seguridad y monitorización documentadas en la memoria de prácticas.
+This project documents the networking, security, and monitoring activities completed for **Unit 01: Security Management and Regulations** of the IT Systems and Services Management course.
 
-## Contenidos trabajados
+The work connects networking fundamentals with practical administration: designing topologies, configuring services, checking connectivity, and diagnosing failures through system metrics and service checks.
 
-| Área | Contenidos |
+## Technical Stack
+
+| Technology | Role in the labs |
 | --- | --- |
-| Fundamentos de redes | Modelos OSI y TCP/IP, direccionamiento IPv4, máscaras de red, direcciones públicas y privadas, puertos y puertas de enlace. |
-| Simulación con Packet Tracer | Diseño de topologías con routers, switches, puntos de acceso, equipos cliente y servidores; configuración de redes cableadas e inalámbricas. |
-| Servicios de red | Resolución de nombres mediante DNS y acceso a páginas web mediante HTTP. |
-| Conectividad y acceso | NAT, concepto de CG-NAT y redirección de puertos para acceder a servicios de redes privadas. |
-| Seguridad de red | Autenticación Wi-Fi WPA2-PSK y prácticas con el cortafuegos IPCop y una zona desmilitarizada (DMZ). |
-| Monitorización | Supervisión de disponibilidad, HTTP, CPU, memoria RAM y disco mediante Nagios 4 y NCPA. |
+| **Cisco Packet Tracer** | Network design, device configuration, and traffic simulation |
+| **Debian GNU/Linux** | Server administration and network diagnostics |
+| **IPCop** | Firewall configuration and network security zones |
+| **Apache HTTP Server** | Web service and Nagios web interface |
+| **Nagios 4** | Centralized host and service monitoring |
+| **NCPA** | Remote CPU, memory, and disk metrics |
+| **UTM / VirtualBox** | Virtual machines for the lab environments |
 
-## Prácticas destacadas
+## Featured Labs
 
-### Diseño y simulación de redes con Cisco Packet Tracer
+### 01 · Network Design with Cisco Packet Tracer
 
-- Creación de topologías con varias redes conectadas mediante routers.
-- Configuración de direcciones IP, máscaras y puertas de enlace.
-- Configuración de redes inalámbricas y autenticación WPA2-PSK.
-- Acceso desde equipos cliente a un servidor web utilizando un servidor DNS.
-- Uso de NAT y redirección de puertos en redes privadas.
-- Análisis del intercambio de mensajes entre clientes y servidores.
+Designed and configured topologies with routers, switches, wireless access points, clients, and servers to explore communication across multiple networks.
 
-### Seguridad perimetral con IPCop y DMZ
+- Configured IPv4 addresses, subnet masks, and default gateways.
+- Set up wired and wireless networks, including WPA2-PSK authentication.
+- Configured DNS resolution and HTTP access from client devices.
+- Applied NAT and port forwarding to private network scenarios.
+- Examined the message exchanges involved in accessing a web service.
 
-Práctica de configuración de un entorno con IPCop, una red interna y una DMZ destinada a alojar un servidor web Debian. Se trabajó la separación de zonas de red y se realizaron comprobaciones de conectividad y acceso al servicio HTTP.
+**Core concepts:** OSI and TCP/IP models, public and private addressing, ports, routing, DNS, HTTP, and NAT.
 
-### Monitorización de un servidor Debian con Nagios y NCPA
+![Cisco Packet Tracer workspace showing routers connecting client networks to DNS and HTTP servers](docs/images/packet-tracer-topology.png)
 
-Configuración de un servidor Nagios 4 para supervisar otra máquina Debian mediante el agente NCPA. Las comprobaciones incluyeron:
+*Network topology from the Packet Tracer lab, connecting client networks to DNS and HTTP services.*
 
-- Disponibilidad del equipo.
-- Funcionamiento del servicio HTTP.
-- Uso de CPU, memoria RAM y disco.
-- Umbrales de estado `WARNING` y `CRITICAL`.
+### 02 · Perimeter Security with IPCop and a DMZ
 
-La práctica incluyó la validación de la configuración y la resolución de incidencias relacionadas con la conectividad, el módulo CGI de Apache, la ejecución del plugin de NCPA, los permisos y las métricas consultadas.
+Worked with a lab topology containing an IPCop firewall, an internal network, and a demilitarized zone (DMZ) for a Debian web server.
 
-## Herramientas y tecnologías
+- Configured separate network zones for internal systems and the web server.
+- Checked network connectivity and HTTP access.
+- Explored the role of a DMZ in separating exposed services from an internal network.
 
-- **Cisco Packet Tracer:** diseño, configuración y simulación de redes.
-- **Debian GNU/Linux:** administración de equipos y servicios.
-- **IPCop:** cortafuegos y configuración de zonas de red.
-- **Apache HTTP Server:** servicio web e interfaz de Nagios.
-- **Nagios 4 y NCPA:** monitorización de equipos, servicios y recursos.
-- **UTM y VirtualBox:** entornos de virtualización utilizados en las prácticas.
-- **Herramientas de diagnóstico:** `ip`, `ping`, `curl`, `nc`, `ss` y `systemctl`.
+<p align="center">
+  <img src="docs/images/ipcop-dmz-architecture.png" alt="IPCop reference diagram showing external connectivity, an internal LAN, and a DMZ containing a Debian web server" width="520">
+</p>
 
-## Aprendizajes
+*Reference architecture from the lab brief, showing the IPCop firewall and its external, internal LAN, and DMZ zones.*
 
-- Relacionar los conceptos de redes con su funcionamiento en un entorno práctico.
-- Diseñar y comprobar topologías de red en Packet Tracer.
-- Configurar servicios DNS y HTTP y verificar su accesibilidad.
-- Comprender la función de NAT, los cortafuegos y las DMZ.
-- Interpretar estados y métricas para detectar problemas en servidores.
-- Diagnosticar incidencias y documentar las soluciones aplicadas.
+### 03 · Debian Server Monitoring with Nagios and NCPA
+
+Configured a Nagios 4 server to monitor a second Debian machine, using NCPA to retrieve system resource metrics.
+
+| Check | Purpose |
+| --- | --- |
+| **Host availability** | Verify that the monitored machine is reachable |
+| **HTTP** | Check whether the web service responds |
+| **CPU** | Track processor utilization |
+| **Memory** | Track RAM utilization |
+| **Disk** | Track storage utilization |
+
+Configured `WARNING` and `CRITICAL` thresholds, validated Nagios configuration, and tested plugin execution under the Nagios service account.
+
+**Documented outcome:** the monitored host was reachable, and its HTTP, CPU, memory, and disk checks reached an `OK` state. The final Nagios configuration validation reported zero errors.
+
+![Nagios service dashboard showing OK states for the Debian server's HTTP, CPU, memory, and disk checks](docs/images/nagios-service-dashboard.png)
+
+*Captured Nagios dashboard showing the Debian server's HTTP, CPU, memory, and disk checks in an OK state.*
+
+## Troubleshooting and Validation
+
+The monitoring lab included diagnosing and resolving:
+
+- Connectivity failures caused by virtual machines being on different networks.
+- Apache CGI configuration issues affecting the Nagios interface.
+- Python interpreter and NCPA plugin execution issues.
+- Missing Nagios command definitions and execution permissions.
+- An incorrect NCPA disk metric path.
+
+**Diagnostic tools:** `ip`, `ping`, `curl`, `nc`, `ss`, and `systemctl`.
+
+## Skills Demonstrated
+
+- Designing and validating network topologies in Cisco Packet Tracer.
+- Configuring and verifying DNS and HTTP services.
+- Working with NAT, firewall zones, and DMZ architectures.
+- Monitoring Linux hosts, services, and resource utilization.
+- Using diagnostic evidence to identify and resolve configuration issues.
+- Documenting procedures, incidents, and verified results.
 
 ---
 
-Trabajo académico realizado en entornos de simulación y laboratorio.
+*Academic project completed in simulated and virtualized lab environments.*
